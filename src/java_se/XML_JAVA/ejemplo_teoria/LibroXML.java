@@ -1,4 +1,4 @@
-package java_se.XML_JAVA;
+package java_se.XML_JAVA.ejemplo_teoria;
 
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;

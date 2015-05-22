@@ -1,4 +1,4 @@
-package org.microforum.cursojava;
+package java_se.XML_JAVA.ejemplo_teoria;
 
 public class Libro {
 	private String isbn ;  

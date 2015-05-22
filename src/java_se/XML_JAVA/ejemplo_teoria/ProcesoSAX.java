@@ -1,4 +1,4 @@
-package org.microforum.cursojava;
+package java_se.XML_JAVA.ejemplo_teoria;
 
 import java.io.FileInputStream;
 import java.io.IOException;

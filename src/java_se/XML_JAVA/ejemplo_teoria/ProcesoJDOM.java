@@ -1,4 +1,4 @@
-package java_se.XML_JAVA;
+package java_se.XML_JAVA.ejemplo_teoria;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
