@@ -1,6 +1,6 @@
 package log4java;
 
-import org.apache.log4j.Logger;
+import java.util.logging.Logger;
 
 public class MainLog {
 
@@ -8,7 +8,9 @@ public class MainLog {
 
 	// private final static Logger log = Logger.getRootLogger();
 
-	public static void main(String[] args) {// cada uno de los log lo ponemos en donde lo necesitemos dependiendo del error encontrado.
+	public static void main(String[] args) {// cada uno de los log lo ponemos en
+											// donde lo necesitemos dependiendo
+											// del error encontrado.
 		log.error("JODER CON LOS Q TOCAN!!!!!");
 		log.info("Informando...");
 		log.warn("Cuidaito!!!!!");
