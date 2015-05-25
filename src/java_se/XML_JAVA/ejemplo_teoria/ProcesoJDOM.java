@@ -4,13 +4,13 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.text.Format;
 import java.util.List;
 
 import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.JDOMException;
 import org.jdom2.input.SAXBuilder;
+import org.jdom2.output.Format;
 import org.jdom2.output.XMLOutputter;
 
 public class ProcesoJDOM {
@@ -48,7 +48,16 @@ public class ProcesoJDOM {
 		Element nuevolibro = new Element("libro");
 		// Añadimos un atributo
 		nuevolibro.setAttribute("isbn", "xxxx-yyyy");
-		padre.addContent(nuevolibro);
+		padre.addContent(nuevolibro/*
+									 * si quieres añadir nuevo elemento | new
+									 * element ("titulo")
+									 */);
+		Element titulo = new Element("titulo");
+		titulo.addContent("Dragonlance");// aqui indicamos si es dentro de padre
+											// o
+											// dentro de isbn.
+		nuevolibro.addContent(titulo);// estas añadiendo la etiqueta titulo al
+										// libro
 
 		// SERIALIZO EL DOCUMENT A UN FICHERO DE SALIDA
 
