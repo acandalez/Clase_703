@@ -1,4 +1,4 @@
-package java_se.XML_JAVA.practica1;
+package java_se.XML_JAVA.practica1_SAX;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -13,7 +13,7 @@ public class ProcesoSAX {
 
 	public static void main(String[] args) {
 
-		ExcepcionesXML o = new ExcepcionesXML();
+		ExcepcionesXML Ex = new ExcepcionesXML();
 		// Creamos nuestros objetos libro y libroxml vacío
 		Libro libro = new Libro();
 
@@ -21,26 +21,22 @@ public class ProcesoSAX {
 
 		try {
 
-			// Creamos la factoria de parseadores por defecto
+			// Creamos la factoria de parseadores por defecto.
 			XMLReader reader = XMLReaderFactory.createXMLReader();
-			// Añadimos nuestro manejador al reader pasandole el objeto libro
+			// Añadimos nuestro manejador al reader pasandole el objeto libro.
 			reader.setContentHandler(libroxml);
-			// Procesamos el xml de ejemplo
+			// Procesamos el xml de ejemplo.
 			reader.setErrorHandler(new ExcepcionesXML());
 			// mensaje que evalua el estado del xml.
 
 			reader.parse(new InputSource(
-					new FileInputStream("libros-error.xml")));// parsea
-																// o
-																// lee
+					new FileInputStream("libros-error.xml")));
+			// parsea o lee.
+			reader.parse(new InputSource(new FileInputStream("libros.xml")));
 
-			HashMap<String, Libro> libros = libroxml.mapLibros();// creamos el
-																	// hashmap
-																	// donde
-																	// almacenamos
-																	// los
-																	// libros
-			System.out.println(o);
+			HashMap<String, Libro> libros = libroxml.mapLibros();
+			// creamos el hashmap donde almacenamos los libros.
+			System.out.println(Ex);
 			System.out.println(libros);
 		} catch (SAXException e) {
 			e.printStackTrace();

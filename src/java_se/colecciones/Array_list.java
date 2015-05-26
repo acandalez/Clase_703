@@ -13,7 +13,7 @@ public class Array_list {
 		Persona p2 = new Persona("Pedro", (byte) 25);
 
 		listapersona.add(p1);// Crea el objeto de la lista
-		listapersona.remove(p1);// Elimina objeto de persona p1
+		// listapersona.remove(p1);// Elimina objeto de persona p1
 		listapersona.add(p2);
 
 		for (Persona persona : listapersona) {// foreach (se lee de esta manera)

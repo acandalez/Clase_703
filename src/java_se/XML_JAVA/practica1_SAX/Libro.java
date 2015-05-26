@@ -1,4 +1,4 @@
-package java_se.XML_JAVA.practica1;
+package java_se.XML_JAVA.practica1_SAX;
 
 public class Libro {
 	private String isbn ;  

@@ -1,4 +1,4 @@
-package java_se.XML_JAVA.practica1;
+package java_se.XML_JAVA.practica1_SAX;
 
 import java.util.HashMap;
 
@@ -14,7 +14,7 @@ public class LibroXML extends DefaultHandler {
 	// -------------------------------
 	// buscamos la clave con lo que String es la clave y luego se lo asignamos a
 	// la editorial
-	private HashMap<String, Libro> nuevohashmap;// primero lo declaras.
+	public HashMap<String, Libro> nuevohashmap;// primero lo declaras.
 
 	// -------------------------------
 
@@ -35,6 +35,10 @@ public class LibroXML extends DefaultHandler {
 
 		// Si la etiqueta es libro leemos el atributo isbn
 		if (localName.equals("libro")) {
+			this.libro = new Libro();// crear nuevo ojbeto de libro en libro
+										// cuantas
+			// veces sea necesario para añadir al
+			// hashmap
 			String isbn = attributes.getValue("isbn");
 			// Lo guardamos en el objeto libro
 			libro.setIsbn(isbn);
@@ -46,7 +50,7 @@ public class LibroXML extends DefaultHandler {
 			throws SAXException {
 		// Guardamos el texto en la variable temporal
 		valor = new String(ch, start, length);
-		System.out.println(valor);
+		// System.out.println(valor);
 	}
 
 	@Override
@@ -54,7 +58,7 @@ public class LibroXML extends DefaultHandler {
 			throws SAXException {
 		// Según la etiqueta guardamos el valor leido
 		// en una propiedad del objeto libro
-		System.out.println(name);
+		// System.out.println(name);
 		if (localName.equals("titulo")) {
 			libro.setTitulo(valor);
 		} else if (localName.equals("autor")) {
@@ -70,4 +74,11 @@ public class LibroXML extends DefaultHandler {
 		}
 
 	}
+
+	public HashMap<String, Libro> mapLibros() {// Creamos una variable que nos
+		// devuelva nuestro hashmap (esto es para el main)
+
+		return this.nuevohashmap;
+	}
+
 }

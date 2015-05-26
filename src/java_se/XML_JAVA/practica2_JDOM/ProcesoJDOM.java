@@ -1,4 +1,4 @@
-package java_se.XML_JAVA.ejemplo_teoria;
+package java_se.XML_JAVA.practica2_JDOM;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
