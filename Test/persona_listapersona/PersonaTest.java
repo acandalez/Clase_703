@@ -20,7 +20,12 @@ public class PersonaTest {
 		// fail("Not yet implemented");
 		Persona p = new Persona("Juan", 21);
 		Persona p1 = new Persona("Juan", 21);
-		assertEquals(p.equals(testpersona), p1.equals(testpersona));
+		assertEquals(p.equals(p), p1.equals(p1));
 	}
 
+	@Test
+	public void PersonaNull() {
+		Persona p = new Persona("Juan", 0);
+
+	}
 }
