@@ -33,4 +33,9 @@ public class Persona implements Serializable {
 		return this.nombre + " " + this.edad;
 	}
 
+	public int compareTo(Persona p2) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }
