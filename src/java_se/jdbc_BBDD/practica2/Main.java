@@ -3,6 +3,7 @@ package java_se.jdbc_BBDD.practica2;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.Savepoint;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Date;
@@ -11,6 +12,7 @@ public class Main {
 
 	public static void main(String[] args) throws Exception {
 
+		Savepoint sp = null;
 		Connection conn = null;
 		ResultSet rset = null;
 		Statement stmt = null;
@@ -59,13 +61,15 @@ public class Main {
 
 				// Metodos de una Transaccion
 				conn.setAutoCommit(false);
-				conn.setSavepoint();
+				sp = conn.setSavepoint();// hace un punto de guardado para
+											// volver a el cuando salte un
+											// rollback
 				conn.commit();
 
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			conn.rollback();// voler a un punto anterior
+			conn.rollback(sp);// voler a un punto anterior
 		} finally // libero recursos, de "adentro a fuera" , ResultSet,
 					// Statment, Conexion
 		{

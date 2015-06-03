@@ -6,7 +6,10 @@ import java.sql.Statement;
 
 public class Connection {
 
+	private static Connection conn = new Connection();
+
 	public Connection secure_connection() {
+
 		conn = null;
 		ResultSet rset = null;
 		Statement stmt = null;
