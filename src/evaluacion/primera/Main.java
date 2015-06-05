@@ -29,7 +29,7 @@ public class Main {
 				
 			}
 			 
-			 /**MOSTRAR IDS*/
+			 /**MOSTRAR DADA SU ID*/
 			 try {
 				 
 					List<RegionsDTO> list_regions = RegionsDAO.obtain_id_regions();
@@ -37,11 +37,11 @@ public class Main {
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
-					System.out.println("Error al recuperar la lista de ID de la base de datos");
+					System.out.println("Error al recuperar la lista de regiones por ID de la base de datos");
 					
 				}
 		}
 
 	}
 
-}
+

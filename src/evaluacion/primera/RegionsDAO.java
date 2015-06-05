@@ -1,6 +1,7 @@
 package evaluacion.primera;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -10,7 +11,8 @@ import java.util.List;
 public class RegionsDAO {
 	
 	private static List<RegionsDTO> list_regions = null;
-	private static Connection conexion = null;
+	public static ConnectionBBDD  conecction = null;
+	public static ConnectionBBDD conn = new ConnectionBBDD();
 	private static Statement stmt = null;
 	private static ResultSet rs = null;
 	private static RegionsDTO regionsDTO = null;
@@ -36,7 +38,7 @@ public class RegionsDAO {
 		try {
 
 			// conexion = Conexion.obtenerConexion();//clase conexion ARREGLAR
-			stmt = conexion.createStatement();
+			stmt = ((Connection) conn.getConnection()).createStatement();//creo que no funciona
 			rs = stmt.executeQuery(SQL_Statements.Regions_Consultation);
 			list_regions = new ArrayList<RegionsDTO>();
 			while (rs.next()) {
@@ -59,16 +61,13 @@ public class RegionsDAO {
 	/**OBTENER REGIONES POR ID*/
 	public static List<RegionsDTO> obtain_id_regions() throws SQLException {
 
-		List<RegionsDTO> list_regions = null;
-		Connection conexion = null;
-		Statement stmt = null;
-		ResultSet rs = null;
-		RegionsDTO regionsDTO = null;
+		PreparedStatement preparedStament;
 
 		try {
 
-			// conexion = Conexion.obtenerConexion();//clase conexion ARREGLAR
-			stmt = conexion.createStatement();
+			//conecction = Connection.;//clase conexion ARREGLAR
+			stmt = conn.getConnection()/*falta codigo prepareStament pero no funciona*/
+					("SELECT * FROM regions where id = ?");//creo que no funciona
 			rs = stmt.executeQuery(SQL_Statements.Regions_Consultation_ID);
 			list_regions = new ArrayList<RegionsDTO>();
 			while (rs.next()) {
