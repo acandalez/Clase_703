@@ -3,6 +3,7 @@ package evaluacion.primera;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.Savepoint;
 import java.sql.Statement;
 
 /**
@@ -25,9 +26,18 @@ public class ConnectionBBDD {
 	Connection connection;
 	private static Statement stmt = null;
 
-	/** CONECTAR BBDD */
-	public Statement connectionBBDD() {
+	/** TRANSACCIONES */
+	Savepoint sp = null;
+
+	/**
+	 * CONECTAR BBDD
+	 * 
+	 * @throws SQLException
+	 */
+	public Statement connectionBBDD() throws SQLException {
 		try {
+			connection.setAutoCommit(false);
+			Savepoint sp = connection.setSavepoint();
 
 			/** OBTENEMOS EL DRIVER DE ORACLE */
 			Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -38,10 +48,13 @@ public class ConnectionBBDD {
 				System.out.println("Conexion a la base de datos" + bd + "OK\n");
 			}
 		} catch (SQLException e) {
+			connection.rollback(sp);
 			System.out.println(e);
 		} catch (ClassNotFoundException e) {
+			connection.rollback(sp);
 			System.out.println(e);
 		} catch (Exception e) {
+			connection.rollback(sp);
 			System.out.println(e);
 		}
 		return stmt;
@@ -64,7 +77,7 @@ public class ConnectionBBDD {
 
 	/** METODO CREATE STATEMENT */
 	public Statement createStatement() {
-		// TODO Auto-generated method stub
+
 		return stmt = conn.createStatement();
 	}
 
