@@ -62,15 +62,15 @@ public class ConnectionBBDD {
 		return stmt;
 	}
 
-	/** DESCONECTAR (disconnect) */
-	public void disconnect() {
-		conn = null;
-	}
-
 	/** METODO CREATE STATEMENT */
 	public Statement createStatement() {
 		// TODO Auto-generated method stub
 		return stmt = conn.createStatement();
+	}
+
+	/** DESCONECTAR (disconnect) */
+	public void disconnect() {
+		conn = null;
 	}
 
 }
