@@ -5,6 +5,12 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+/**
+ * DEFINIMOS LOS PARAMETROS Y ACCIONES DE CONEXION A LA BASE DE DATOS
+ * 
+ * @author acandalez
+ *
+ */
 public class ConnectionBBDD {
 	/** PARAMETROS DE CONEXION */
 

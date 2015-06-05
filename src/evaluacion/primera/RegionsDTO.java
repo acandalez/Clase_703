@@ -1,5 +1,11 @@
 package evaluacion.primera;
 
+/**
+ * EN ESTA CLASE DEFINIMOS LOS ATRIBUTOS DE REGIONS
+ * 
+ * @author acandalez
+ *
+ */
 public class RegionsDTO {
 
 	private int Region_ID;

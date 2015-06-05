@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * EN ESTA CLASE DEFINIMOS LAS ACCIONES DE LA CLASE REGIONS
  * 
  * @author acandalez
  *
