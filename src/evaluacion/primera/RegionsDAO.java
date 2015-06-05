@@ -1,6 +1,7 @@
 package evaluacion.primera;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -57,20 +58,25 @@ public class RegionsDAO {
 		} finally {
 			// Conexion.liberarRecursos(conexion, stmt, rs); ARREGLAR
 		}
-
 		return list_regions;
 
 	}
 
 	/** OBTENER REGIONES POR ID */
-	public static List<RegionsDTO> obtain_id_regions() throws SQLException {
+	public static RegionsDTO obtain_id_regions(int region_ID)
+			throws SQLException {
 
 		try {
 
-			conn = ConnectionBBDD.secure_connection();// clase conexion ARREGLAR
+			// clase conexion ARREGLAR
+			PreparedStatement consultation = ConnectionBBDD.secure_connection()
+					.prepareStatement(
+							"SELECT * FROM REGIONS where REGION_ID = ?");
+
 			stmt = conn.createStatement();
 			rs = stmt.executeQuery(SQL_Statements.Regions_Consultation_ID);
-			list_regions = new ArrayList<RegionsDTO>();
+			RegionsDTO regions = new RegionsDTO();
+
 			while (rs.next()) {
 				regionsDTO = composing_object(rs);
 				list_regions.add(regionsDTO);
@@ -84,7 +90,7 @@ public class RegionsDAO {
 			// Conexion.liberarRecursos(conexion, stmt, rs); ARREGLAR
 		}
 
-		return list_regions;
+		return regionsDTO;
 
 	}
 
@@ -93,7 +99,7 @@ public class RegionsDAO {
 	 * 
 	 * @throws SQLException
 	 */
-	public void InsertarRegion(String region) throws SQLException {
+	public void insertarRegion(String region) throws SQLException {
 
 		try {
 
